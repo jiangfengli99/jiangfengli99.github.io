@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Java语法糖 | 
+        
+        墨锋
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="前言语法糖（Syntactic Sugar），也称糖衣语法，是由英国计算机学家 Peter.J.Landin（彼得·兰丁） 发明的一个术语，指在计算机语言中添加的某种语法，这种语法对语言的功能并没有影响，但是更方便程序员使用。语法糖就是对现有语法的一个封装。简而言之，语法糖让程序更加简洁，有更高的可读性。我们所熟知的编程语言中几乎都有语法糖。很多人说Java是一个“低糖语言”，其实从Java 7开始，Java语言层面上一直在添加各种糖，主要是在“Project Coin”项目下研发。尽管现在Java有人还是认为现在的Java是低糖，未来还会持续向着“高糖”的方向发展。">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="墨锋">
+    <meta name="msapplication-starturl" content="http://jiangfengli99.github.io/2020/08/25/Java%E8%AF%AD%E6%B3%95%E7%B3%96/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="墨锋">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://jiangfengli99.github.io/2020/08/25/Java%E8%AF%AD%E6%B3%95%E7%B3%96/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Java语法糖 | 墨锋">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="前言语法糖（Syntactic Sugar），也称糖衣语法，是由英国计算机学家 Peter.J.Landin（彼得·兰丁） 发明的一个术语，指在计算机语言中添加的某种语法，这种语法对语言的功能并没有影响，但是更方便程序员使用。语法糖就是对现有语法的一个封装。简而言之，语法糖让程序更加简洁，有更高的可读性。我们所熟知的编程语言中几乎都有语法糖。很多人说Java是一个“低糖语言”，其实从Java 7开始，Java语言层面上一直在添加各种糖，主要是在“Project Coin”项目下研发。尽管现在Java有人还是认为现在的Java是低糖，未来还会持续向着“高糖”的方向发展。">
+    
+
+    
+        <meta property="article:published_time" content="Tue Aug 25 2020 15:55:01 GMT+0800">
+        <meta property="article:modified_time" content="Tue Aug 25 2020 22:10:56 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://jiangfengli99.github.io/2020/08/25/Java%E8%AF%AD%E6%B3%95%E7%B3%96/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://jiangfengli99.github.io/2020/08/25/Java%E8%AF%AD%E6%B3%95%E7%B3%96/index.html",
+    "headline": "Java语法糖",
+    "datePublished": "Tue Aug 25 2020 15:55:01 GMT+0800",
+    "dateModified": "Tue Aug 25 2020 22:10:56 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Jiangfeng Li",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/1.jpg"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "墨锋",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": "",
+    "description": "前言语法糖（Syntactic Sugar），也称糖衣语法，是由英国计算机学家 Peter.J.Landin（彼得·兰丁） 发明的一个术语，指在计算机语言中添加的某种语法，这种语法对语言的功能并没有影响，但是更方便程序员使用。语法糖就是对现有语法的一个封装。简而言之，语法糖让程序更加简洁，有更高的可读性。我们所熟知的编程语言中几乎都有语法糖。很多人说Java是一个“低糖语言”，其实从Java 7开始，Java语言层面上一直在添加各种糖，主要是在“Project Coin”项目下研发。尽管现在Java有人还是认为现在的Java是低糖，未来还会持续向着“高糖”的方向发展。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%89%8D%E8%A8%80"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A7%A3%E8%AF%AD%E6%B3%95%E7%B3%96"><span class="post-toc-number">2.</span> <span class="post-toc-text">解语法糖</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%96%E5%9D%97%E4%B8%80%E3%80%81switch%E6%94%AF%E6%8C%81String%E4%B8%8E%E6%9E%9A%E4%B8%BE"><span class="post-toc-number">3.</span> <span class="post-toc-text">糖块一、switch支持String与枚举</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%96%E5%9D%97%E4%BA%8C%E3%80%81%E6%B3%9B%E5%9E%8B%E5%92%8C%E7%B1%BB%E5%9E%8B%E6%93%A6%E9%99%A4"><span class="post-toc-number">4.</span> <span class="post-toc-text">糖块二、泛型和类型擦除</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%96%E5%9D%97%E4%B8%89%E3%80%81%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1"><span class="post-toc-number">5.</span> <span class="post-toc-text">糖块三、自动装箱与拆箱</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%96%E5%9D%97%E5%9B%9B-%E3%80%81%E6%96%B9%E6%B3%95%E5%8F%98%E9%95%BF%E5%8F%82%E6%95%B0"><span class="post-toc-number">6.</span> <span class="post-toc-text">糖块四 、方法变长参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%96%E5%9D%97%E4%BA%94-%E3%80%81%E6%9E%9A%E4%B8%BE"><span class="post-toc-number">7.</span> <span class="post-toc-text">糖块五 、枚举</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%96%E5%9D%97%E5%85%AD-%E3%80%81%E5%86%85%E9%83%A8%E7%B1%BB"><span class="post-toc-number">8.</span> <span class="post-toc-text">糖块六 、内部类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%96%E5%9D%97%E4%B8%83-%E3%80%81%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91"><span class="post-toc-number">9.</span> <span class="post-toc-text">糖块七 、条件编译</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%96%E5%9D%97%E5%85%AB-%E3%80%81%E6%96%AD%E8%A8%80"><span class="post-toc-number">10.</span> <span class="post-toc-text">糖块八 、断言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%96%E5%9D%97%E4%B9%9D-%E3%80%81%E6%95%B0%E5%80%BC%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="post-toc-number">11.</span> <span class="post-toc-text">糖块九 、数值字面量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%96%E5%9D%97%E5%8D%81-%E3%80%81%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF"><span class="post-toc-number">12.</span> <span class="post-toc-text">糖块十 、增强for循环</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%96%E5%9D%97%E5%8D%81%E4%B8%80-%E3%80%81try-with-resource%E8%AF%AD%E5%8F%A5"><span class="post-toc-number">13.</span> <span class="post-toc-text">糖块十一 、try-with-resource语句</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%96%E5%9D%97%E5%8D%81%E4%BA%8C%E3%80%81Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="post-toc-number">14.</span> <span class="post-toc-text">糖块十二、Lambda表达式</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Java语法糖
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/1.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Jiangfeng Li</strong>
+        <span>8月 25, 2020</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java语法糖&url=http://jiangfengli99.github.io/2020/08/25/Java%E8%AF%AD%E6%B3%95%E7%B3%96/index.html&pic=http://jiangfengli99.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Java语法糖&url=http://jiangfengli99.github.io/2020/08/25/Java%E8%AF%AD%E6%B3%95%E7%B3%96/index.html&via=Jiangfeng Li" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://jiangfengli99.github.io/2020/08/25/Java%E8%AF%AD%E6%B3%95%E7%B3%96/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://jiangfengli99.github.io/2020/08/25/Java%E8%AF%AD%E6%B3%95%E7%B3%96/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>语法糖（Syntactic Sugar），也称糖衣语法，是由英国计算机学家 Peter.J.Landin（彼得·兰丁） 发明的一个术语，指在计算机语言中添加的某种语法，这种语法对语言的功能并没有影响，但是更方便程序员使用。语法糖就是对现有语法的一个封装。简而言之，语法糖让程序更加简洁，有更高的可读性。<br>我们所熟知的编程语言中几乎都有语法糖。很多人说Java是一个“低糖语言”，其实从Java 7开始，Java语言层面上一直在添加各种糖，主要是在“Project Coin”项目下研发。尽管现在Java有人还是认为现在的Java是低糖，未来还会持续向着“高糖”的方向发展。</p>
+<a id="more"></a>
+
+<hr>
+<h2 id="解语法糖"><a href="#解语法糖" class="headerlink" title="解语法糖"></a>解语法糖</h2><p>前面提到过，语法糖的存在主要是方便开发人员使用。但是，Java虚拟机并不支持这些语法糖。这些语法糖在编译阶段就会被还原成简单的基础语法结构，这个过程就是解语法糖。<br>Java中的语法糖只存在于编译期，在编译器将 .java 源文件编译成 .class 字节码时，如果你去看com.sun.tools.javac.main.JavaCompiler的源码，你会发现在compile()中有一个步骤就是调用desugar()，这个方法就是负责解语法糖而实现的。<br>Java 中最常用的语法糖主要有switch语句支持String与枚举、泛型和类型擦除、自动装箱与拆箱、方法边长参数、枚举、内部类、条件编译、断言、数值字面量、增强for循环、try-with-resources语句、Lambda表达式等。本文主要来分析下这些语法糖背后的原理。一步一步剥去糖衣，看看其本质。</p>
+<hr>
+<h2 id="糖块一、switch支持String与枚举"><a href="#糖块一、switch支持String与枚举" class="headerlink" title="糖块一、switch支持String与枚举"></a>糖块一、switch支持String与枚举</h2><p>从Java 7 开始，Java语言中的语法糖在逐渐丰富，其中一个比较重要的就是Java 7中switch语句开始支持String。<br>在开始coding之前先科普下，Java中的swith自身原本就支持基本类型。比如int、char等。<br>对于int类型，直接进行数值的比较。对于char类型则是比较其ascii码。<br>所以，对于编译器来说，switch中其实只能使用整型，任何类型的比较都要转换成整型。比如byte。short，char(ackii码是整型)以及int。<br>那么接下来看下switch对String的支持，有以下代码：<br>public class SwitchDemoString {<br>    public static void main(String[] args) {<br>        String str = “world”;<br>        switch (str) {<br>        case “hello”:<br>            System.out.println(“hello”);<br>            break;<br>        case “world”:<br>            System.out.println(“world”);<br>            break;<br>        default:<br>            break;<br>        }<br>    }<br>}<br>反编译后内容如下：<br>public class SwitchStringDemo {<br>    public static void main(String[] args) {<br>        String str;<br>        String string = str = “world”;<br>        int n = -1;<br>        switch (string.hashCode()) {<br>            case 99162322: {<br>                if (!string.equals(“hello”)) break;<br>                n = 0;<br>                break;<br>            }<br>            case 113318802: {<br>                if (!string.equals(“world”)) break;<br>                n = 1;<br>            }<br>        }<br>        switch (n) {<br>            case 0: {<br>                System.out.println(“hello”);<br>                break;<br>            }<br>            case 1: {<br>                System.out.println(“world”);<br>                break;<br>            }<br>        }<br>    }<br>}<br>看到这个代码，你知道原来字符串的switch是通过equals()和hashCode()方法来实现的。还好hashCode()方法返回的是int，而不是long。<br>仔细看下可以发现，进行switch比较的实际是哈希值，然后通过使用equals方法比较进行安全检查，这个检查是必要的，因为哈希可能会发生碰撞。因此它的性能是不如使用枚举进行switch或者使用纯整数常量，但这也不是很差。</p>
+<hr>
+<h2 id="糖块二、泛型和类型擦除"><a href="#糖块二、泛型和类型擦除" class="headerlink" title="糖块二、泛型和类型擦除"></a>糖块二、泛型和类型擦除</h2><p>我们都知道，很多语言都是支持泛型的，但是很多人不知道的是，不同的编译器对于泛型的处理方式是不同的。<br>通常情况下，一个编译器处理泛型有两种方式：Code specialization和Code sharing。<br>C++和C#是使用Code specialization的处理机制，而Java使用的是Code sharing的机制。<br>Code sharing方式为每个泛型类型创建唯一的字节码表示，并且将该泛型类型的实例都映射到这个唯一的字节码表示上。将多种泛型类形实例映射到唯一的字节码表示是通过类型擦除（type erasue）实现的。<br>也就是说，对于Java虚拟机来说，他根本不认识Map&lt;String, String&gt; map这样的语法。需要在编译阶段通过类型擦除的方式进行解语法糖。<br>类型擦除的主要过程如下：<br>• 将所有的泛型参数用其最左边界（最顶级的父类型）类型替换。<br>• 移除所有的类型参数。<br>以下代码：<br>Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();<br>map.put(“name”, “JourWon”);<br>map.put(“wechat”, “JourWon”);<br>map.put(“blog”, “<a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon&quot;">https://blog.csdn.net/ThinkWon&quot;</a>);<br>解语法糖之后会变成：<br>Map map = new HashMap();<br>map.put(“name”, “JourWon”);<br>map.put(“wechat”, “JourWon”);<br>map.put(“blog”, “<a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon&quot;">https://blog.csdn.net/ThinkWon&quot;</a>);<br>以下代码：<br>public static &lt;A extends Comparable<A>&gt; A max(Collection<A> xs) {<br>    Iterator<A> xi = xs.iterator();<br>    A w = xi.next();<br>    while (xi.hasNext()) {<br>        A x = xi.next();<br>        if (w.compareTo(x) &lt; 0)<br>            w = x;<br>    }<br>    return w;<br>}<br>类型擦除后会变成：<br>public static Comparable max(Collection xs) {<br>    Iterator xi = xs.iterator();<br>    Comparable w = (Comparable) xi.next();<br>    while (xi.hasNext()) {<br>        Comparable x = (Comparable) xi.next();<br>        if (w.compareTo(x) &lt; 0)<br>            w = x;<br>    }<br>    return w;<br>}<br>虚拟机中没有泛型，只有普通类和普通方法，所有泛型类的类型参数在编译时都会被擦除，泛型类并没有自己独有的Class类对象。比如并不存在List.class或是List.class，而只有List.class。</p>
+<hr>
+<h2 id="糖块三、自动装箱与拆箱"><a href="#糖块三、自动装箱与拆箱" class="headerlink" title="糖块三、自动装箱与拆箱"></a>糖块三、自动装箱与拆箱</h2><p>自动装箱就是Java自动将原始类型值转换成对应的对象，比如将int的变量转换成Integer对象，这个过程叫做装箱，反之将Integer对象转换成int类型值，这个过程叫做拆箱。<br>因为这里的装箱和拆箱是自动进行的非人为转换，所以就称作为自动装箱和拆箱。<br>原始类型byte, short, char, int, long, float, double 和 boolean 对应的封装类为Byte, Short, Character, Integer, Long, Float, Double, Boolean。<br>先来看个自动装箱的代码：<br>public static void main(String[] args) {<br>    int i = 10;<br>    Integer n = i;<br>}<br>反编译后代码如下:<br>public static void main(String args[]) {<br>    int i = 10;<br>    Integer n = Integer.valueOf(i);<br>}<br>再来看个自动拆箱的代码：<br>public static void main(String[] args) {<br>    Integer i = 10;<br>    int n = i;<br>}<br>反编译后代码如下：<br>public static void main(String args[]) {<br>    Integer i = Integer.valueOf(10);<br>    int n = i.intValue();<br>}<br>从反编译得到内容可以看出，在装箱的时候自动调用的是Integer的valueOf(int)方法。而在拆箱的时候自动调用的是Integer的intValue方法。<br>所以，装箱过程是通过调用包装器的valueOf方法实现的，而拆箱过程是通过调用包装器的 xxxValue方法实现的。</p>
+<hr>
+<h2 id="糖块四-、方法变长参数"><a href="#糖块四-、方法变长参数" class="headerlink" title="糖块四 、方法变长参数"></a>糖块四 、方法变长参数</h2><p>可变参数(variable arguments)是在Java 1.5中引入的一个特性。它允许一个方法把任意数量的值作为参数。<br>看下以下可变参数代码，其中print方法接收可变参数：<br>public static void main(String[] args) {<br>    print(“CSDN-ThinkWon”, “简书-JourWon”, “博客:<a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon&quot;">https://blog.csdn.net/ThinkWon&quot;</a>);<br>}<br>public static void print(String… strs) {<br>    for (int i = 0; i &lt; strs.length; i++) {<br>        System.out.println(strs[i]);<br>    }<br>}<br>反编译后代码：<br>public static void main(String[] args) {<br>    print(new String[]{“CSDN-ThinkWon”, “\u7b80\u4e66-JourWon”, “\u535a\u5ba2:<a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon&quot;%7D">https://blog.csdn.net/ThinkWon&quot;}</a>);<br>}<br>public static void print(String[] strs) {<br>    for (int i = 0; i &lt; strs.length; i++)<br>        System.out.println(strs[i]);<br>}<br>从反编译后代码可以看出，可变参数在被使用的时候，他首先会创建一个数组，数组的长度就是调用该方法时传递实参的个数，然后再把参数值全部放到这个数组当中，再把这个数组作为参数传递到被调用的方法中。</p>
+<hr>
+<h2 id="糖块五-、枚举"><a href="#糖块五-、枚举" class="headerlink" title="糖块五 、枚举"></a>糖块五 、枚举</h2><p>Java SE5提供了一种新的类型-Java的枚举类型，关键字enum可以将一组具名的值的有限集合创建为一种新的类型，而这些具名的值可以作为常规的程序组件使用，这是一种非常有用的功能。<br>要想看源码，首先得有一个类吧，那么枚举类型到底是什么类呢？是enum吗？<br>答案很明显不是，enum就和class一样，只是一个关键字，他并不是一个类。<br>那么枚举是由什么类维护的呢，我们简单的写一个枚举：<br>public enum T {<br>    SPRING,SUMMER;<br>}<br>然后我们使用反编译，看看这段代码到底是怎么实现的，反编译后代码内容如下：<br>public final class T extends Enum<T> {<br>    public static final /* enum <em>/ T SPRING = new T(“SPRING”, 0);<br>    public static final /</em> enum <em>/ T SUMMER = new T(“SUMMER”, 1);<br>    private static final /</em> synthetic */ T[] $VALUES;<br>    public static T[] values() {<br>        return (T[])$VALUES.clone();<br>    }<br>    public static T valueOf(String name) {<br>        return Enum.valueOf(T.class, name);<br>    }<br>    private T(String string, int n) {<br>        super(string, n);<br>    }<br>    static {<br>        $VALUES = new T[]{SPRING, SUMMER};<br>    }<br>}<br>通过反编译后代码我们可以看到，public final class T extends Enum，说明，该类是继承了Enum类的，同时final关键字告诉我们，这个类也是不能被继承的。<br>当我们使用enmu来定义一个枚举类型的时候，编译器会自动帮我们创建一个final类型的类继承Enum类，所以枚举类型不能被继承。</p>
+<hr>
+<h2 id="糖块六-、内部类"><a href="#糖块六-、内部类" class="headerlink" title="糖块六 、内部类"></a>糖块六 、内部类</h2><p>内部类又称为嵌套类，可以把内部类理解为外部类的一个普通成员。<br>内部类之所以也是语法糖，是因为它仅仅是一个编译时的概念。<br>outer.java里面定义了一个内部类inner，一旦编译成功，就会生成两个完全不同的.class文件了，分别是outer.class和outer$inner.class。所以内部类的名字完全可以和它的外部类名字相同。<br>public class OutterClass {<br>    private String userName;<br>    public String getUserName() {<br>        return userName;<br>    }<br>    public void setUserName(String userName) {<br>        this.userName = userName;<br>    }<br>    public static void main(String[] args) {<br>    }<br>    class InnerClass {<br>        private String name;<br>        public String getName() {<br>            return name;<br>        }<br>        public void setName(String name) {<br>            this.name = name;<br>        }<br>    }<br>}<br>以上代码编译后会生成两个class文件：OutterClass$InnerClass.class 、OutterClass.class 。<br>当我们尝试使用jad对OutterClass.class文件进行反编译的时候，命令行会打印以下内容：<br>Parsing OutterClass.class…<br>Parsing inner class OutterClass$InnerClass.class…<br>Generating OutterClass.jad<br>它会把两个文件全部进行反编译，然后一起生成一个OutterClass.jad文件。文件内容如下：<br>public class OutterClass {<br>    class InnerClass {<br>        public String getName() {<br>            return name;<br>        }<br>        public void setName(String name) {<br>            this.name = name;<br>        }<br>        private String name;<br>        final OutterClass this$0;<br>        InnerClass() {<br>            this.this$0 = OutterClass.this;<br>            super();<br>        }<br>    }<br>    public OutterClass() {<br>    }<br>    public String getUserName() {<br>        return userName;<br>    }<br>    public void setUserName(String userName) {<br>        this.userName = userName;<br>    }<br>    public static void main(String args1[]) {<br>    }<br>    private String userName;<br>}</p>
+<hr>
+<h2 id="糖块七-、条件编译"><a href="#糖块七-、条件编译" class="headerlink" title="糖块七 、条件编译"></a>糖块七 、条件编译</h2><p>—般情况下，程序中的每一行代码都要参加编译。但有时候出于对程序代码优化的考虑，希望只对其中一部分内容进行编译，此时就需要在程序中加上条件，让编译器只对满足条件的代码进行编译，将不满足条件的代码舍弃，这就是条件编译。<br>如在C或C++中，可以通过预处理语句来实现条件编译。其实在Java中也可实现条件编译。我们先来看一段代码：<br>public class ConditionalCompilation {<br>    public static void main(String[] args) {<br>        final boolean DEBUG = true;<br>        if(DEBUG) {<br>            System.out.println(“Hello, DEBUG!”);<br>        }<br>        final boolean ONLINE = false;<br>        if(ONLINE){<br>            System.out.println(“Hello, ONLINE!”);<br>        }<br>    }<br>}<br>反编译后代码如下：<br>public class ConditionalCompilation {<br>    public static void main(String[] args) {<br>    boolean DEBUG = true;</p>
+<pre><code>System.out.println(&quot;Hello, DEBUG!&quot;);
+
+boolean ONLINE = false;</code></pre>
+<p>}<br>首先，我们发现，在反编译后的代码中没有System.out.println(“Hello, ONLINE!”);，这其实就是条件编译。<br>当if(ONLINE)为false的时候，编译器就没有对其内的代码进行编译。<br>所以，Java语法的条件编译，是通过判断条件为常量的if语句实现的。根据if判断条件的真假，编译器直接把分支为false的代码块消除。通过该方式实现的条件编译，必须在方法体内实现，而无法在正整个Java类的结构或者类的属性上进行条件编译。<br>这与C/C++的条件编译相比，确实更有局限性。在Java语言设计之初并没有引入条件编译的功能，虽有局限，但是总比没有更强。</p>
+<hr>
+<h2 id="糖块八-、断言"><a href="#糖块八-、断言" class="headerlink" title="糖块八 、断言"></a>糖块八 、断言</h2><p>在Java中，assert关键字是从JAVA SE 1.4 引入的，为了避免和老版本的Java代码中使用了assert关键字导致错误，Java在执行的时候默认是不启动断言检查的（这个时候，所有的断言语句都将忽略）。<br>如果要开启断言检查，则需要用开关-enableassertions或-ea来开启。<br>看一段包含断言的代码：<br>public class AssertTest {<br>    public static void main(String args[]) {<br>        int a = 1;<br>        int b = 1;<br>        assert a == b;<br>        System.out.println(“CSDN-ThinkWon”);<br>        assert a != b : “ThinkWon”;<br>        System.out.println(“博客:<a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon&quot;">https://blog.csdn.net/ThinkWon&quot;</a>);<br>    }<br>}<br>反编译后代码如下：<br>public class AssertTest {<br>    static final /* synthetic */ boolean $assertionsDisabled;<br>    public static void main(String[] args) {<br>        boolean a = true;<br>        boolean b = true;<br>        if (!$assertionsDisabled &amp;&amp; a != b) {<br>            throw new AssertionError();<br>        }<br>        System.out.println(“CSDN-ThinkWon”);<br>        if (!$assertionsDisabled &amp;&amp; a == b) {<br>            throw new AssertionError((Object)”ThinkWon”);<br>        }<br>        System.out.println(“\u535a\u5ba2:<a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon&quot;">https://blog.csdn.net/ThinkWon&quot;</a>);<br>    }<br>    static {<br>        $assertionsDisabled = !AssertTest.class.desiredAssertionStatus();<br>    }<br>}<br>很明显，反编译之后的代码要比我们自己的代码复杂的多。所以，使用了assert这个语法糖我们节省了很多代码。<br>其实断言的底层实现就是if语言，如果断言结果为true，则什么都不做，程序继续执行，如果断言结果为false，则程序抛出AssertError来打断程序的执行。<br>-enableassertions会设置$assertionsDisabled字段的值。</p>
+<hr>
+<h2 id="糖块九-、数值字面量"><a href="#糖块九-、数值字面量" class="headerlink" title="糖块九 、数值字面量"></a>糖块九 、数值字面量</h2><p>在java 7中，数值字面量，不管是整数还是浮点数，都允许在数字之间插入任意多个下划线。这些下划线不会对字面量的数值产生影响，目的就是方便阅读。<br>比如：<br>public class Test {<br>    public static void main(String[] args) {<br>        int i = 10_000;<br>        System.out.println(i);<br>    }<br>}<br>反编译后：<br>public class Test {<br>    public static void main(String[] args) {<br>        int i = 10000;<br>        System.out.println(i);<br>    }<br>}<br>反编译后就是把删除了_。也就是说编译器并不认识在数字字面量中的_，需要在编译阶段把他去掉。</p>
+<hr>
+<h2 id="糖块十-、增强for循环"><a href="#糖块十-、增强for循环" class="headerlink" title="糖块十 、增强for循环"></a>糖块十 、增强for循环</h2><p>增强for循环（for-each）相信大家都不陌生，日常开发经常会用到的，他会比for循环要少写很多代码，那么这个语法糖背后是如何实现的呢？<br>public static void main(String args[]) {<br>    String[] strs = {“CSDN-ThinkWon”, “简书-JourWon”, “博客:<a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon&quot;%7D">https://blog.csdn.net/ThinkWon&quot;}</a>;<br>    for (String s : strs) {<br>        System.out.println(s);<br>    }<br>    System.out.println();<br>    List<String> strList = Arrays.asList(strs);<br>    for (String s : strList) {<br>        System.out.println(s);<br>    }<br>}<br>反编译后代码如下：<br>public static void main(String args[]) {<br>    String[] strs;<br>    String[] arrstring = strs = new String[]{“CSDN-ThinkWon”, “\u7b80\u4e66-JourWon”, “\u535a\u5ba2:<a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon&quot;%7D">https://blog.csdn.net/ThinkWon&quot;}</a>;<br>    int n = arrstring.length;<br>    for (int i = 0; i &lt; n; ++i) {<br>        String s = arrstring[i];<br>        System.out.println(s);<br>    }<br>    System.out.println();<br>    List<String> strList = Arrays.asList(strs);<br>    Iterator<String> iterator = strList.iterator();<br>    while (iterator.hasNext()) {<br>        String s = iterator.next();<br>        System.out.println(s);<br>    }<br>}<br>代码很简单，for-each的实现原理其实就是使用了普通的for循环和迭代器。</p>
+<hr>
+<h2 id="糖块十一-、try-with-resource语句"><a href="#糖块十一-、try-with-resource语句" class="headerlink" title="糖块十一 、try-with-resource语句"></a>糖块十一 、try-with-resource语句</h2><p>Java里，对于文件操作IO流、数据库连接等开销非常昂贵的资源，用完之后必须及时通过close方法将其关闭，否则资源会一直处于打开状态，可能会导致内存泄露等问题。<br>关闭资源的常用方式就是在finally块里释放，即调用close方法。比如，我们经常会写这样的代码：<br>public static void main(String args[]) {<br>    BufferedReader br = null;<br>    try {<br>        String line;<br>        br = new BufferedReader(new FileReader(“d:\hello.xml”));<br>        while ((line = br.readLine()) != null) {<br>            System.out.println(line);<br>        }<br>    } catch (IOException e) {<br>        // handle exception<br>    } finally {<br>        try {<br>            if (br != null) {<br>                br.close();<br>            }<br>        } catch (IOException ex) {<br>            // handle exception<br>        }<br>    }<br>}<br>从Java 7开始，jdk提供了一种更好的方式关闭资源，使用try-with-resources语句，改写一下上面的代码，效果如下：<br>public static void main(String args[]) {<br>    try (BufferedReader br = new BufferedReader(new FileReader(“d:\ hello.xml”))) {<br>        String line;<br>        while ((line = br.readLine()) != null) {<br>            System.out.println(line);<br>        }<br>    } catch (IOException e) {<br>        // handle exception<br>    }<br>}<br>看，这简直是一大福音啊，虽然我之前一般使用IOUtils去关闭流，并不会使用在finally中写很多代码的方式，但是这种新的语法糖看上去好像优雅很多呢。<br>反编译以上代码，看下他的背后原理：<br>public static void main(String[] args) {<br>    try {<br>        BufferedReader br = new BufferedReader(new FileReader(“d:\ hello.xml”));<br>        Throwable throwable = null;<br>        try {<br>            String line;<br>            while ((line = br.readLine()) != null) {<br>                System.out.println(line);<br>            }<br>        } catch (Throwable line) {<br>            throwable = line;<br>            throw line;<br>        } finally {<br>            if (br != null) {<br>                if (throwable != null) {<br>                    try {<br>                        br.close();<br>                    } catch (Throwable line) {<br>                        throwable.addSuppressed(line);<br>                    }<br>                } else {<br>                    br.close();<br>                }<br>            }<br>        }<br>    } catch (IOException br) {<br>        // empty catch block<br>    }<br>}<br>其实背后的原理也很简单，那些我们没有做的关闭资源的操作，编译器都帮我们做了。<br>所以，再次印证了，语法糖的作用就是方便程序员的使用，但最终还是要转成编译器认识的语言。</p>
+<hr>
+<h2 id="糖块十二、Lambda表达式"><a href="#糖块十二、Lambda表达式" class="headerlink" title="糖块十二、Lambda表达式"></a>糖块十二、Lambda表达式</h2><p>关于Labmda表达式，有人可能会有质疑，因为网上有人说他并不是语法糖。其实我想纠正下这个说法。<br>Labmda表达式不是匿名内部类的语法糖，但是他也是一个语法糖。实现方式其实是依赖了几个JVM底层提供的Labmda相关api。<br>先来看一个简单的Labmda表达式。遍历一个list：<br>public static void main(String[] args) {<br>    List<String> strList = new ArrayList&lt;&gt;();<br>    strList.add(“CSDN-ThinkWon”);<br>    strList.add(“简书-JourWon”);<br>    strList.add(“博客:<a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon&quot;">https://blog.csdn.net/ThinkWon&quot;</a>);<br>    strList.forEach(s -&gt; System.out.println(s));<br>}<br>为啥说他并不是内部类的语法糖呢，前面讲内部类我们说过，内部类在编译之后会有两个class文件，但是，包含Labmda表达式的类编译后只有一个文件。<br>反编译后代码如下:<br>public static void main(String[] args) {<br>    ArrayList<String> strList = new ArrayList<String>();<br>    strList.add(“CSDN-ThinkWon”);<br>    strList.add(“\u7b80\u4e66-JourWon”);<br>    strList.add(“\u535a\u5ba2:<a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon&quot;">https://blog.csdn.net/ThinkWon&quot;</a>);<br>    strList.forEach((Consumer<String>)LambdaMetafactory.metafactory(null, null, null, (Ljava/lang/Object;)V, lambda$main$0(java.lang.String ), (Ljava/lang/String;)V)());<br>}<br>private static /* synthetic <em>/ void lambda$main$0(String s) {<br>    System.out.println(s);<br>}<br>可以看到，在forEach方法中，其实是调用了java.lang.invoke.LambdaMetafactory#metafactory方法，该方法的第四个参数implMethod指定了方法实现。可以看到这里其实是调用了一个lambda$main$0方法进行了输出。<br>再来看一个稍微复杂一点的，先对List进行过滤，然后再输出：<br>public static void main(String[] args) {<br>    List<String> strList = new ArrayList&lt;&gt;();<br>    strList.add(“CSDN-ThinkWon”);<br>    strList.add(“简书-JourWon”);<br>    strList.add(“博客:<a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon&quot;">https://blog.csdn.net/ThinkWon&quot;</a>);<br>    List list = strList.stream().filter(string -&gt; string.contains(“CSDN-ThinkWon”)).collect(Collectors.toList());<br>    list.forEach(s -&gt; {<br>        System.out.println(s);<br>    });<br>}<br>反编译后代码如下：<br>public static void main(String[] args) {<br>    ArrayList<String> strList = new ArrayList<String>();<br>    strList.add(“CSDN-ThinkWon”);<br>    strList.add(“\u7b80\u4e66-JourWon”);<br>    strList.add(“\u535a\u5ba2:<a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon&quot;">https://blog.csdn.net/ThinkWon&quot;</a>);<br>    List<Object> list = strList.stream().filter((Predicate<String>)LambdaMetafactory.metafactory(null, null, null, (Ljava/lang/Object;)Z, lambda$main$0(java.lang.String ), (Ljava/lang/String;)Z)()).collect(Collectors.toList());<br>    list.forEach((Consumer<Object>)LambdaMetafactory.metafactory(null, null, null, (Ljava/lang/Object;)V, lambda$main$1(java.lang.Object ), (Ljava/lang/Object;)V)());<br>}<br>private static /</em> synthetic <em>/ void lambda$main$1(Object s) {<br>    System.out.println(s);<br>}<br>private static /</em> synthetic */ boolean lambda$main$0(String string) {<br>    return string.contains(“CSDN-ThinkWon”);<br>}<br>两个Labmda表达式分别调用了lambda$main1和lambda1和lambdamain$0两个方法。<br>所以，Labmda表达式的实现其实是依赖了一些底层的api，在编译阶段，编译器会把Labmda表达式进行解糖，转换成调用内部api的方式。<br>可能遇到的坑<br>泛型-当泛型遇到重载<br>public class GenericTypes {<br>    public static void method(List<String> list) {<br>        System.out.println(“invoke method(List<String> list)”);<br>    }<br>    public static void method(List<Integer> list) {<br>        System.out.println(“invoke method(List<Integer> list)”);<br>    }<br>}<br>上面这段代码，有两个重载的函数，因为他们的参数类型不同，一个是List，另一个是List，但是，这段代码是编译通不过的。因为我们前面讲过，参数List和List编译之后都被擦除了，变成了一样的原生类型List，擦除动作导致这两个方法的特征签名变得一模一样。<br>泛型-当泛型遇到catch<br>泛型的类型参数不能用在Java异常处理的catch语句中。因为异常处理是由JVM在运行时刻来进行的。由于类型信息被擦除，JVM是无法区分两个异常类型MyException和MyException的<br>泛型-当泛型内包含静态变量<br>public class StaticTest{<br>    public static void main(String[] args) {<br>        GT<Integer> gti = new GT<Integer>();<br>        gti.var = 1;<br>        GT<String> gts = new GT<String>();<br>        gts.var = 2;<br>        System.out.println(gti.var);<br>    }<br>    class GT<T> {<br>        public static int var = 0;<br>        public void nothing(T x) {<br>        }<br>    }<br>}<br>这段代码编译都无法通过，因为泛型里面不能引用静态变量。由于经过类型擦除，所有的泛型类实例都关联到同一份字节码上，泛型类的所有静态变量是共享的。<br>自动装箱与拆箱-对象相等比较<br>public static void main(String[] args) {<br>    Integer a = 1000;<br>    Integer b = 1000;<br>    Integer c = 100;<br>    Integer d = 100;<br>    System.out.println(“a == b is “ + (a == b));<br>    System.out.println((“c == d is “ + (c == d)));<br>}<br>输出结果：<br>a == b is false<br>c == d is true<br>在Java 5中，在Integer的操作上引入了一个新功能来节省内存和提高性能。整型对象通过使用相同的对象引用实现了缓存和重用。<br>适用于整数值区间-128 至 +127。<br>只适用于自动装箱。使用构造函数创建对象不适用。<br>增强for循环<br>for (Student stu : students) {<br>    if (stu.getId() == 2) {<br>        students.remove(stu);<br>    }<br>}<br>会抛出ConcurrentModificationException异常。<br>Iterator是工作在一个独立的线程中，并且拥有一个 mutex 锁。 Iterator被创建之后会建立一个指向原来对象的单链索引表，当原来的对象数量发生变化时，这个索引表的内容不会同步改变，所以当索引指针往后移动的时候就找不到要迭代的对象，所以按照 fail-fast 原则 Iterator 会马上抛出java.util.ConcurrentModificationException异常。<br>所以 Iterator 在工作的时候是不允许被迭代的对象被改变的。但你可以使用 Iterator 本身的方法remove()来删除对象，Iterator.remove() 方法会在删除当前迭代对象的同时维护索引的一致性。<br>总结<br>前面介绍了12种Java中常用的语法糖。所谓语法糖就是提供给开发人员便于开发的一种语法而已。但是这种语法只有开发人员认识。要想被执行，需要进行解糖，即转成JVM认识的语法。<br>当我们把语法糖解糖之后，你就会发现其实我们日常使用的这些方便的语法，其实都是一些其他更简单的语法构成的。有了这些语法糖，我们在日常开发的时候可以大大提升效率，但是同时也要避免过渡使用。使用之前最好了解下原理，避免掉坑。</p>
+<hr>
+<p>##参考文献</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon/article/details/103592572?depth_1-utm_source=distribute.wap_feed.none-task&amp;request_id=&amp;utm_source=distribute.wap_feed.none-task">https://blog.csdn.net/ThinkWon/article/details/103592572?depth_1-utm_source=distribute.wap_feed.none-task&amp;request_id=&amp;utm_source=distribute.wap_feed.none-task</a></p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2020/08/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/1.jpg" alt="Jiangfeng Li's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        li18270770703@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2020/08/">八月 2020<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>墨锋
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('
+<link rel="stylesheet" href="/css/uc.css">
+');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
